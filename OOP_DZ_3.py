@@ -40,34 +40,40 @@ def get_shop_list_by_dishes(dishes, person_count):
     pprint(element)
 # get_shop_list_by_dishes(['Омлет',  'omelette', 'salad', 'sandwich', 'Запеченный картофель', 'Утка по-пекински', 'Фахитос'], 4)
 # Задача 3
+files = ['1.txt', '2.txt', '3.txt']
+result = []
+for i in files:
+    with open(i, 'r', encoding='utf-8') as f:
+        file = f.readlines()
+        result += [[i, len(file), file]]
 
-with open('1.txt', 'r', encoding='utf-8') as file1:
-    copy_file1 = file1.readlines()
-with open('2.txt', 'r', encoding='utf-8') as file2:
-    copy_file2 = file2.readlines()
-with open('3.txt', 'r', encoding='utf-8') as file3:
-    copy_file3 = file3.readlines()
-print(copy_file3)
-print(copy_file2)
-print(copy_file1)
+def sort(i):
+    return i[1]
+result.sort(key=sort)
+for data in result:
+    with open('file5.txt', 'a', encoding='utf-8') as f:
+        f.write(str(data[0]) + '\n')
+        f.write(str(data[1]) + '\n')
+        f.writelines(data[2] + ['\n'*2])
+
+
+
+
+
 #
-print(len(copy_file3))
-print(len(copy_file2))
-print(len(copy_file1))
-
-with open('4.txt', 'w') as file4:
-    file4.writelines('\n2.txt\n')
-    file4.writelines(str(len(copy_file2)))
-    copy_file2.extend('\n')
-    file4.writelines('\n')
-    file4.writelines((copy_file2))
-    file4.writelines('\n1.txt\n')
-    file4.writelines(str(len(copy_file1)))
-    copy_file1.extend('\n')
-    file4.writelines('\n')
-    file4.writelines((copy_file1))
-    file4.writelines('\n3.txt\n')
-    file4.writelines(str(len(copy_file3)))
-    copy_file3.extend('\n')
-    file4.writelines('\n')
-    file4.writelines((copy_file3))
+# with open('4.txt', 'w') as file4:
+#     file4.writelines('\n2.txt\n')
+#     file4.writelines(str(len(copy_file2)))
+#     copy_file2.extend('\n')
+#     file4.writelines('\n')
+#     file4.writelines((copy_file2))
+#     file4.writelines('\n1.txt\n')
+#     file4.writelines(str(len(copy_file1)))
+#     copy_file1.extend('\n')
+#     file4.writelines('\n')
+#     file4.writelines((copy_file1))
+#     file4.writelines('\n3.txt\n')
+#     file4.writelines(str(len(copy_file3)))
+#     copy_file3.extend('\n')
+#     file4.writelines('\n')
+#     file4.writelines((copy_file3))
